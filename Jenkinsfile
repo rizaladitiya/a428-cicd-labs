@@ -12,4 +12,17 @@ pipeline {
             }
         }
     }
+    stage('Test') {
+        steps {
+            sh './jenkins/scripts/test.sh'
+            input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
+        }
+    }
+    stage('Deliver') { 
+        steps {
+            sh './jenkins/scripts/deliver.sh' 
+            sh './jenkins/scripts/kill.sh' 
+            sh 'sleep 60'
+        }
+    }
 }
