@@ -18,7 +18,7 @@ pipeline {
             input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
         }
     }
-    stage('Deliver') { 
+    stage('Deploy') { 
         steps {
             sh './jenkins/scripts/deliver.sh' 
             sh './jenkins/scripts/kill.sh' 
